@@ -1,0 +1,26 @@
+<h4>Active Servers: {{ this.getActiveServers() }}</h4>
+
+<div class="row">
+  <div class="col-md-6">
+    <br>
+    <label>Server</label>
+    <input type="text" [(ngModel)]="serverName" class="form-control">
+    <br>
+    <button class="btn btn-primary" (click)="onCreateServer()">Add</button>
+    <br>
+    <br>
+    <p>{{serverCreationStatus}}</p>
+    <button class="btn btn-info" (click)="onDisplayDetails()">Display Details</button>
+
+    <br>
+    <br>
+    <p *ngIf="showDetails">Before acting, one must stop, think and ask why I am feeling like this and am I acting on emotions or what is real.</p>
+
+
+    <app-server *ngFor="let server of servers"></app-server>
+  </div>
+  <div class="col-md-6">
+    <h3>Logs</h3>
+    <p *ngFor="let entry of logs; let i = index" [ngStyle]="{backgroundColor: i >= 5 ? 'blue' : ''}" [ngClass]="{ white: i >= 5 }">{{entry}}</p>
+  </div>
+</div>
